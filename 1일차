@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    // 1. 변수 정의 (AI 피처로 활용될 데이터들)
+    int trainID = 1004;          // 열차 고유 번호 (Integer)
+    double initialSpeed = 0.0;   // 초기 속도 (Double for precision)
+    double acceleration = 1.25;  // 가속도 (m/s^2)
+    int time = 0;                // 운행 시간 (seconds)
+    double finalSpeed = 0.0;     // 최종 계산된 속도
+
+    printf("=== [Day 1] Railway Physics Simulation ===\n");
+    printf("Train ID: %d | Acceleration: %.2f m/s^2\n\n", trainID, acceleration);
+
+    // 2. 사용자(기관사) 입력 시뮬레이션
+    printf("Enter operation time (seconds): ");
+    scanf("%d", &time);
+
+    // 3. 물리 공식 적용: v = v0 + a * t
+    // 이 수식은 향후 AI 기반 속도 예측 모델의 기초 물리 환경(Environment)이 됨
+    finalSpeed = initialSpeed + (acceleration * time);
+
+    // 4. 결과 출력
+    printf("\n--- Calculation Result ---\n");
+    printf("Estimated Speed after %d seconds: %.2f km/h\n", time, finalSpeed);
+    printf("Status: Data points generated for AI Feature engineering.\n");
+
+    return 0;
+}
