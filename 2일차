@@ -1,0 +1,41 @@
+int main() {
+    int signalStatus;   // 1: Green, 2: Yellow, 3: Red
+    double currentSpeed;
+    const double SPEED_LIMIT_YELLOW = 45.0; // 서행 구간 제한 속도
+    const double MAX_SAFE_SPEED = 120.0;    // 절대 제한 속도
+
+    printf("=== [Day 2] ATP (Automatic Train Protection) System ===\n");
+    
+    // 1. 센서 데이터 입력 시뮬레이션
+    printf("Signal (1:Green, 2:Yellow, 3:Red): ");
+    scanf("%d", &signalStatus);
+    printf("Current Train Speed (km/h): ");
+    scanf("%lf", &currentSpeed);
+
+    printf("\n--- Safety Analysis ---\n");
+
+    // 2. 다중 조건문을 활용한 안전 로직 (Rule-based Decision Making)
+    // 이 로직은 향후 AI 의사결정 나무(Decision Tree) 모델의 기반이 됨
+    
+    if (currentSpeed > MAX_SAFE_SPEED) {
+        printf("[CRITICAL] 🚨 OVER SPEED! Immediate emergency braking required.\n");
+    }
+    else if (signalStatus == 3) { // Red Signal
+        printf("[ALARM] 🚨 STOP SIGNAL! Emergency brake engaged.\n");
+    }
+    else if (signalStatus == 2) { // Yellow Signal
+        if (currentSpeed > SPEED_LIMIT_YELLOW) {
+            printf("[WARNING] ⚠️ CAUTION! Speed exceeds limit (45km/h) for Yellow signal.\n");
+        } else {
+            printf("[INFO] ✅ Safe approach under Yellow signal.\n");
+        }
+    }
+    else if (signalStatus == 1) { // Green Signal
+        printf("[INFO] ✅ Normal operation. Track is clear.\n");
+    }
+    else {
+        printf("[ERROR] ❓ Unknown signal state. Fail-safe mode activated.\n");
+    }
+
+    return 0;
+}
